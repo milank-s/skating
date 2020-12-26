@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] Transform center;
     [SerializeField] float radius;
+    [SerializeField] float speed;
     [SerializeField] Text text;
 
     float angle;
@@ -19,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        angle = (angle + 1) % 360;
+        angle = (angle + 1 * speed * Time.deltaTime) % 360;
         text.text = angle.ToString() + " " + Mathf.Cos(Mathf.Deg2Rad*angle);
         Vector2 pos;
         pos.x = center.position.x + radius * Mathf.Cos(Mathf.Deg2Rad*angle);

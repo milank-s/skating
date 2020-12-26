@@ -235,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   center: {fileID: 494806577}
   radius: 6
+  speed: 50
   text: {fileID: 1735877540}
 --- !u!23 &901711940
 MeshRenderer:
