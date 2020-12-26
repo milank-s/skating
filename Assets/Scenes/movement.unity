@@ -236,8 +236,8 @@ MonoBehaviour:
   center: {fileID: 494806577}
   baseRadius: 5
   radiusRange: {x: 2, y: 7}
-  easing: 0.0075
-  speed: 50
+  easing: 0.002
+  speed: 30
   text: {fileID: 1735877540}
 --- !u!23 &901711940
 MeshRenderer:
