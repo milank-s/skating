@@ -24,7 +24,7 @@ public class SkaterBoid : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		distanceFromCenter = Vector3.Distance(transform.position, Vector3.zero);
-		curAngle = Vector2.Angle(Vector2.right, (Vector2)(Vector2.zero - (Vector2)transform.position));
+		curAngle = GetAngle();
 		rigid = transform.GetComponent<Rigidbody2D>();
 		rigid.velocity = new Vector2(Random.Range(-speedConst, speedConst), Random.Range(-speedConst, speedConst));
 	}
@@ -118,24 +118,31 @@ public class SkaterBoid : MonoBehaviour {
 {
     Gizmos.color = Color.white;
     Gizmos.DrawSphere(desiredPosition, 0.1f);
-	Gizmos.DrawCube(transform.position, new Vector3(0.1f, 0.1f, 0.1f));
+	Gizmos.DrawCube(transform.position, new Vector3(0.1f, 0.1f, 0.25f));
+	Gizmos.DrawLine(transform.position, desiredPosition);
 }
+
+      public float GetAngle()
+     {
+         Vector2 direction = (Vector2)transform.position - Vector2.zero;
+         float angle = Mathf.Atan2(direction.y,  direction.x) * Mathf.Rad2Deg;
+         if (angle < 0f) angle += 360f;
+         return angle;
+     }
+
 
 	// Update is called once per frame
 	void Update () {
 
 		//TODO Add force based on curvature of rink
 
-		//curAngle = Vector2.Angle(Vector2.right, (Vector2)transform.position - Vector2.zero);
+		curAngle = GetAngle();
  		curAngle = (curAngle + 1 * rotateSpeed * Time.deltaTime);
         Vector2 pos;
         pos.x = distanceFromCenter * Mathf.Cos(Mathf.Deg2Rad * curAngle);
         pos.y = distanceFromCenter * Mathf.Sin(Mathf.Deg2Rad * curAngle);
         desiredPosition = new Vector2(pos.x, pos.y);
 		Vector2 toDesiredPos = (Vector2)desiredPosition - (Vector2)transform.position;
-
-		Debug.DrawLine(transform.position, desiredPosition);
-		
 
 		Collider2D[] separationCollision = filterByAngle(angle, rigid.velocity, transform.position,
 											Physics2D.OverlapCircleAll(transform.position, separationSphereRadius));
