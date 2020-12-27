@@ -197,14 +197,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: 0, y: 10, z: -2}
+  m_LocalRotation: {x: -0.5735764, y: 0, z: 0, w: 0.8191521}
+  m_LocalPosition: {x: 0, y: -10, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1888371927}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -70, y: 0, z: 0}
 --- !u!1 &958619610
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 958619611}
   - component: {fileID: 958619613}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,9 +299,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7540eaeb8d2dfcb4788e9311a515ef93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateAroundRinkSpeed: 25
+  followRinkWeight: 5
+  minSeparationLength: 1.25
+  separationSphereRadius: 2
+  separationWeight: 2
+  cohesionSphereRadius: 5
+  cohesionWeight: 3
+  alignmentSphereRadius: 2
+  alignmentWeight: 2
+  speed: 2
+  boidFOV: 180
   skater: {fileID: 114144, guid: 5a774da844fbdfc46b4720b0a6de6918, type: 3}
   spawnRadius: 5
   amount: 20
+  skaters: []
 --- !u!1 &1888371926
 GameObject:
   m_ObjectHideFlags: 0
