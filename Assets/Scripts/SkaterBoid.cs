@@ -105,18 +105,12 @@ public class SkaterBoid : MonoBehaviour {
 		}
 
 		ret = ret/(float)alColl.Length;
-
-		//Todo messy way of reversing the boid's direction when it hits a wall?
-		if (wallTouched) {
-			ret = Vector2.zero - (Vector2)transform.position;
-		}
-
 		return ret*alWeight;
 	}
 	
 	void OnDrawGizmos()
 {
-    Gizmos.color = Color.white;
+    Gizmos.color = new Color(0.5f, 0.5f, 0.5f);
     Gizmos.DrawSphere(desiredPosition, 0.1f);
 	Gizmos.DrawCube(transform.position, new Vector3(0.1f, 0.1f, 0.25f));
 	Gizmos.DrawLine(transform.position, desiredPosition);

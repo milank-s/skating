@@ -20,7 +20,7 @@ public class SkaterManager : MonoBehaviour
 
     [Space(10)]
 
-    public GameObject skater;
+    public SkaterBoid skater;
     public float spawnRadius = 10;
     public int amount = 20;
 
@@ -35,6 +35,7 @@ public class SkaterManager : MonoBehaviour
         rotateAroundRinkSpeed = s.rotateSpeed;
         followRinkWeight =  s.followCircleWeight;
         minSeparationLength =  s.minSeparationLength;
+        separationSphereRadius = s.separationSphereRadius;
         separationWeight = s.separationWeight;
         alignmentSphereRadius = s.alignmentSphereRadius;
         alignmentWeight = s.alignmentWeight;
@@ -53,17 +54,34 @@ public class SkaterManager : MonoBehaviour
 
     public void SpawnSkater(){
         Vector3 spawnPos = Random.insideUnitCircle * spawnRadius;
-        SkaterBoid newSkater = Instantiate(skater, spawnPos, Quaternion.identity).GetComponent<SkaterBoid>();
+        SkaterBoid newSkater = Instantiate(skater, spawnPos, Quaternion.identity);
+        newSkater.transform.parent = transform;
         skaters.Add(newSkater);
         
     }
 
+    public void SaveValuesToPrefab(){
+        SkaterBoid s = skater;
+            s.rotateSpeed = rotateAroundRinkSpeed;
+            s.followCircleWeight = followRinkWeight;
+            s.minSeparationLength = minSeparationLength;
+            s.separationWeight = separationWeight;
+            s.alignmentSphereRadius =alignmentSphereRadius;
+            s.separationSphereRadius = separationSphereRadius;
+            s.alignmentWeight = alignmentWeight;
+            s.cohesionSphereRadius = cohesionSphereRadius;
+            s.cohesionWeight = cohesionWeight;
+            s.speedConst = speed;
+            s.angle = boidFOV;
+    }
+    
     public void Update(){
         foreach(SkaterBoid s in skaters){
             s.rotateSpeed = rotateAroundRinkSpeed;
             s.followCircleWeight = followRinkWeight;
             s.minSeparationLength = minSeparationLength;
             s.separationWeight = separationWeight;
+            s.separationSphereRadius = separationSphereRadius;
             s.alignmentSphereRadius =alignmentSphereRadius;
             s.alignmentWeight = alignmentWeight;
             s.cohesionSphereRadius = cohesionSphereRadius;
