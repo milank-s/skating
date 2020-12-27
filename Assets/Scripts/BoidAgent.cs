@@ -68,53 +68,35 @@ public class BoidAgent : MonoBehaviour {
 		int playerVal = 0;
 
 		for(int i = 0; i < cohColl.Length; i++){
-			if (cohColl [i].gameObject.tag == "Player") {
-				playerTouched = true;
-				playerVal = i;
-			}
 			avPos += (Vector2)cohColl[i].gameObject.transform.position;
 		}
 
 		avPos = avPos/(float)cohColl.Length;
-		if (playerTouched) {
-			avPos = Vector2.Lerp (avPos, cohColl [playerVal].transform.position, 0.8f);
-		}
-		if (playerTouched) {
-			ret = (avPos - position) * cohWeight * 2;
-		} else {
-			ret = (avPos - position) * cohWeight;
-		}
-
+		ret = (avPos - position) * cohWeight;
+		
 		return ret;
 	}
 
 	Vector2 calculateAlignment(Vector2 position, Collider2D[] alColl, float alWeight){
 		Vector2 ret = new Vector2(0f, 0f);
 
-
 		bool playerTouched = false;
 		bool wallTouched = false;
 		int playerVal = 0;
 
 		for(int i = 0; i < alColl.Length; i++){
-			if (alColl [i].gameObject.tag == "Player") {
-				playerTouched = true;
-				playerVal = i;
-			}else{
-				ret += alColl [i].gameObject.GetComponent<Rigidbody2D> ().velocity;
-			}
-			if (alColl [i].gameObject.tag == "gameWall") {
-				wallTouched = true;
-			}
+			
+			ret += alColl [i].gameObject.GetComponent<Rigidbody2D> ().velocity;
+
 		}
 
 		ret = ret/(float)alColl.Length;
-		if (playerTouched) {
-			ret = Vector2.Lerp (ret, alColl [playerVal].gameObject.GetComponent<Rigidbody2D> ().velocity, 0.8f);
-		}
+
+		//Todo messy way of reversing the boid's direction when it hits a wall?
 		if (wallTouched) {
 			ret = Vector2.zero - (Vector2)transform.position;
 		}
+
 		return ret*alWeight;
 	}
 
@@ -126,6 +108,10 @@ public class BoidAgent : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		
+		//TODO Add force based on curvature of rink
+
 		Collider2D[] separationCollision = filterByAngle(angle, rigid.velocity, transform.position,
 											Physics2D.OverlapCircleAll(transform.position, separationSphereRadius));
 		Collider2D[] cohesionCollision = filterByAngle(angle, rigid.velocity, transform.position, 

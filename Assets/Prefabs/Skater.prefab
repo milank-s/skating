@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 494048}
+  - component: {fileID: 11427772}
   - component: {fileID: 5074244}
   - component: {fileID: 5867736}
-  - component: {fileID: 11427772}
+  - component: {fileID: 5520881330032259674}
   m_Layer: 0
-  m_Name: BoidAgent
+  m_Name: Skater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,6 +35,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11427772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44cbf1448ac5214385ea4cc4fe65b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSeparationLength: 1.25
+  separationSphereRadius: 2
+  separationWeight: 2
+  cohesionSphereRadius: 5
+  cohesionWeight: 3
+  alignmentSphereRadius: 2
+  alignmentWeight: 2
+  speedConst: 2
+  angle: 180
 --- !u!50 &5074244
 Rigidbody2D:
   serializedVersion: 4
@@ -71,7 +93,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.08371639
---- !u!114 &11427772
+--- !u!114 &5520881330032259674
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,18 +102,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 114144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a44cbf1448ac5214385ea4cc4fe65b7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c6396fe09fcc214a92f965d96c2da5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSeparationLength: 1.25
-  separationSphereRadius: 1
-  separationWeight: 0.8
-  cohesionSphereRadius: 1
-  cohesionWeight: 0.5
-  alignmentSphereRadius: 1
-  alignmentWeight: 2
-  speedConst: 14
-  angle: 180
 --- !u!1 &1360316333935850
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +184,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360316333935850}
-  m_Text: x
+  m_Text: '*'
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -181,7 +194,7 @@ TextMesh:
   m_FontSize: 64
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 12800000, guid: 26d55d09b4cd4494480bb91bc6e1b4d3, type: 3}
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4288213504
+    rgba: 4284045657
