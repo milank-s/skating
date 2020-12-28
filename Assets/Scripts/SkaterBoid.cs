@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SkaterBoid : MonoBehaviour {
 
+	public bool affectMovement = true;
 	public float rotateSpeed;
 	float distanceFromCenter;
 	public float followCircleWeight = 5;
@@ -128,6 +129,7 @@ public class SkaterBoid : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if(affectMovement){
 		//TODO Add force based on curvature of rink
 
 		curAngle = GetAngle();
@@ -153,5 +155,6 @@ public class SkaterBoid : MonoBehaviour {
 
 		rigid.velocity = (newVel.normalized+rigid.velocity.normalized).normalized*speedConst;
 		transform.up = rigid.velocity;
+		}
 	}
 }

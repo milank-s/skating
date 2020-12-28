@@ -74,7 +74,7 @@ TrailRenderer:
   m_Time: 5
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.2
+    widthMultiplier: 0.05
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -138,6 +138,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5862427450899560213}
   - component: {fileID: 5862427450899560208}
+  - component: {fileID: 1863841744}
+  - component: {fileID: 1863841743}
+  - component: {fileID: 1863841742}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -154,7 +157,7 @@ Transform:
   m_GameObject: {fileID: 5862427450899560209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7601894613936844941}
   - {fileID: 2351880539985358233}
@@ -178,17 +181,78 @@ MonoBehaviour:
   radiusRange: {x: 2, y: 7}
   easing: 0.002
   rotationSpeed: 10
-  moveSpeed: 5
-  acceleration: 1
+  moveSpeed: 3
+  acceleration: 0.75
   decceleration: 0.5
   frequency: 5
-  amplitude: 20
+  amplitude: 15
   velocity: 0
   turnSpeed: 300
   text: {fileID: 0}
   trail: {fileID: 1346500820103519093}
   skatingTrail: {fileID: 7761498668364198494, guid: e7db472ba76f0d847867c5fc5474f9e8,
     type: 3}
+--- !u!50 &1863841744
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862427450899560209}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &1863841743
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862427450899560209}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25
+--- !u!114 &1863841742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862427450899560209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44cbf1448ac5214385ea4cc4fe65b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectMovement: 0
+  rotateSpeed: 0
+  followCircleWeight: 5
+  minSeparationLength: 0
+  separationSphereRadius: 0
+  separationWeight: 0
+  cohesionSphereRadius: 0
+  cohesionWeight: 0
+  alignmentSphereRadius: 0
+  alignmentWeight: 0
+  speedConst: 0
+  angle: 0
 --- !u!1 &8145472487261676906
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +264,6 @@ GameObject:
   - component: {fileID: 7601894613936844941}
   - component: {fileID: 6252822513044540213}
   - component: {fileID: 5633945937571788778}
-  - component: {fileID: 1259992375917529370}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -216,8 +279,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8145472487261676906}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.25}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 5862427450899560213}
   m_RootOrder: 0
@@ -269,17 +332,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1259992375917529370
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8145472487261676906}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
