@@ -109,9 +109,9 @@ public class PlayerMovement : MonoBehaviour
         perp.z = 0;
 
         if(distanceFromCenter > maxDistFromCenter){
-            Quaternion toPlayerRot = Quaternion.Euler(-toPlayer);
+            Quaternion toMiddleRot = Quaternion.LookRotation(Vector3.forward, -toPlayer);
             Quaternion perpRot = Quaternion.LookRotation(Vector3.forward, perp);
-            Quaternion newDir = Quaternion.Lerp(perpRot, toPlayerRot, (distanceFromCenter-maxDistFromCenter) + 0.1f);
+            Quaternion newDir = Quaternion.Lerp(perpRot, toMiddleRot, (distanceFromCenter-maxDistFromCenter) + 0.1f);
             transform.rotation = Quaternion.Lerp(transform.rotation, newDir, Time.deltaTime * returnToRinkSpeed);
 
         }else{

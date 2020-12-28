@@ -131,12 +131,12 @@ PrefabInstance:
     - target: {fileID: 5862427450899560208, guid: 5df61a085da6321419014b6866070f6c,
         type: 3}
       propertyPath: maxDistFromCenter
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5862427450899560208, guid: 5df61a085da6321419014b6866070f6c,
         type: 3}
       propertyPath: returnToRinkSpeed
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5862427450899560209, guid: 5df61a085da6321419014b6866070f6c,
         type: 3}
