@@ -154,7 +154,7 @@ public class SkaterBoid : MonoBehaviour {
         newVel += toDesiredPos.normalized * followCircleWeight;
 
 		rigid.velocity = (newVel.normalized+rigid.velocity.normalized).normalized*speedConst;
-		transform.up = rigid.velocity;
+		//transform.up = rigid.velocity;
 		}
 	}
 }

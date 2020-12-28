@@ -52,9 +52,9 @@ MonoBehaviour:
   followCircleWeight: 2
   minSeparationLength: 1
   separationSphereRadius: 3
-  separationWeight: 1
+  separationWeight: 5
   cohesionSphereRadius: 2
-  cohesionWeight: 1
+  cohesionWeight: 3
   alignmentSphereRadius: 3
   alignmentWeight: 1
   speedConst: 1
