@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class SkateTrail : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] LineRenderer line;
+    
+    public float lifeTime;
+    float life;
+    public void Initialise(Vector3[] points, float time){
+        life = time;
+        lifeTime = time;
+        line.numPositions = points.Length;
+        line.SetPositions(points);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update(){
+        life -= Time.deltaTime;
+        Color c = Color.white;
+        c.a = (life/lifeTime);
+        line.SetColors(c,c);
+        if(lifeTime < 0){
+            Destroy(gameObject);
+        }
     }
 }

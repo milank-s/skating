@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7761498668364198495}
   - component: {fileID: 7761498668364198494}
-  - component: {fileID: 7761498668364198493}
+  - component: {fileID: 136010860606315033}
   m_Layer: 0
   m_Name: SkateTrail
   m_TagString: Untagged
@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5d70b6f1ccf554596f9f686bf91411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!96 &7761498668364198493
-TrailRenderer:
-  serializedVersion: 2
+  line: {fileID: 136010860606315033}
+  lifeTime: 0
+--- !u!120 &136010860606315033
+LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -83,11 +84,11 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Time: 5
+  m_SortingOrder: 0
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.2
+    widthMultiplier: 0.05
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -105,8 +106,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
-      key1: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 0}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -134,10 +135,9 @@ TrailRenderer:
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 1
+    alignment: 0
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
-  m_Emitting: 1
+  m_UseWorldSpace: 1
+  m_Loop: 0

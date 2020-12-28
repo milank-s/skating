@@ -20,9 +20,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float turnSpeed;
     [SerializeField] Text text;
 
-
+    [SerializeField] TrailRenderer trail;
     [SerializeField] SkateTrail skatingTrail;
     
+    float lastSineVal;
     float angle;
     float radius;
     float radiusTarget;
@@ -45,8 +46,29 @@ public class PlayerMovement : MonoBehaviour
         float rotation = Input.GetAxis("Horizontal");
         
         //float sineOffset = Mathf.Sin(Time.time * frequency);
+        
         float sineOffset = Mathf.PingPong(Time.time * frequency, 2);
         sineOffset -= 1;
+        float delta = sineOffset - lastSineVal;
+
+        if(delta < 0){
+            if(sineOffset < 0 && !trail.emitting){
+                RecordMark();
+            }
+            if(sineOffset > 0 && trail.emitting){
+                LeaveMark();
+            }
+        }else{
+            if(sineOffset > 0 && !trail.emitting){
+                RecordMark();
+            }
+            if(sineOffset < 0 && trail.emitting){
+                LeaveMark();
+            }
+        }
+        
+        lastSineVal = sineOffset;
+
         float rotationAmount = Mathf.Abs(rotation);
 
         velocity += acceleration * (1-rotationAmount) * Time.deltaTime;
@@ -56,9 +78,21 @@ public class PlayerMovement : MonoBehaviour
         float turnSpeedTuned = Mathf.Lerp(turnSpeed/2, turnSpeed, 1-(velocity/moveSpeed));
         transform.Rotate(0, 0, -rotation * turnSpeedTuned * Time.deltaTime);
         transform.Rotate(0, 0, sineOffset * Time.deltaTime * amplitude);
+    }
+
+    void RecordMark(){
+        trail.emitting = true;
 
     }
 
+    void LeaveMark(){
+        trail.emitting = false;
+        Vector3[] linePoints = new Vector3[trail.numPositions];
+        trail.GetPositions(linePoints);
+        SkateTrail newTrail = Instantiate(skatingTrail, transform.position, Quaternion.identity);
+        newTrail.Initialise(linePoints, 5);
+        trail.Clear();
+    }
 
     void CircularMovement(){
          if (Input.GetKey(KeyCode.RightArrow))
