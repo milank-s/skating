@@ -74,7 +74,7 @@ TrailRenderer:
   m_Time: 5
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.05
+    widthMultiplier: 0.025
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -120,7 +120,7 @@ TrailRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 3
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
@@ -187,6 +187,8 @@ MonoBehaviour:
   stopSpeed: 5
   frequency: 5
   amplitude: 15
+  maxDistFromCenter: 7
+  returnToRinkSpeed: 5
   velocity: 0
   turnSpeed: 300
   text: {fileID: 0}
