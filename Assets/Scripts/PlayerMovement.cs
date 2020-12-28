@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float stopSpeed;
     [SerializeField] float frequency = 2;
     [SerializeField] float amplitude = 2;
+    [SerializeField] float maxDistFromCenter = 7;
     
     [SerializeField] float velocity;
     [SerializeField] float turnSpeed;
@@ -44,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void FreeMovement(){
+
+
         float rotation = Input.GetAxis("Horizontal");
         float forwardMotion = Input.GetAxis("Vertical");
         float rotationAmount = Mathf.Abs(rotation);
@@ -97,9 +100,21 @@ public class PlayerMovement : MonoBehaviour
         sineOffset = sineOffset * (1-rotationAmount) * amplitude;
         float turnSpeedTuned = Mathf.Lerp(turnSpeed/3, turnSpeed, 1-(velocity/moveSpeed) - Mathf.Clamp01(forwardMotion));
         transform.Rotate(0, 0, -rotation * turnSpeedTuned * Time.deltaTime);
-        transform.Rotate(0, 0, sineOffset * Time.deltaTime * amplitude * Mathf.Clamp01(forwardMotion));
+        transform.Rotate(0, 0, sineOffset * Time.deltaTime * amplitude * (Mathf.Clamp01(forwardMotion) + 0.2f));
 
+        Vector3 toCenter = Vector3.zero - transform.position;
+        Vector3 perp;
+        float distanceFromCenter = toCenter.magnitude;
+        if(distanceFromCenter > maxDistFromCenter){
+            perp = Vector3.Cross(Vector3.forward, toCenter);
+            Quaternion toCenterRot = Quaternion.Euler(toCenter);
+            Quaternion perpRot = Quaternion.LookRotation(-Vector3.forward, perp);
+            toCenterRot = Quaternion.Lerp(perpRot, toCenterRot, 0.25f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, toCenterRot, Time.deltaTime * 50);
+            //get cross product and rotate towards it quickly;
+        }
         transform.position += transform.up * velocity * Time.deltaTime;
+        
     }
 
     void RecordMark(){
