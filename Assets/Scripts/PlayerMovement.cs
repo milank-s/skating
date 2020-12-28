@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     void FreeMovement(){
         transform.position += transform.up * velocity * Time.deltaTime;
         float rotation = Input.GetAxis("Horizontal");
+        float rotationAmount = Mathf.Abs(rotation);
         
         //float sineOffset = Mathf.Sin(Time.time * frequency);
         
@@ -51,7 +52,13 @@ public class PlayerMovement : MonoBehaviour
         sineOffset -= 1;
         float delta = sineOffset - lastSineVal;
 
-        if(delta < 0){
+
+        if(rotationAmount > 0.2f){
+            if(!trail.emitting){
+                RecordMark();
+            }
+        }else{
+            if(delta < 0){
             if(sineOffset < 0 && !trail.emitting){
                 RecordMark();
             }
@@ -66,10 +73,10 @@ public class PlayerMovement : MonoBehaviour
                 LeaveMark();
             }
         }
+        }
         
         lastSineVal = sineOffset;
 
-        float rotationAmount = Mathf.Abs(rotation);
 
         velocity += acceleration * (1-rotationAmount) * Time.deltaTime;
         velocity -= rotationAmount * Time.deltaTime * decceleration;
@@ -81,8 +88,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void RecordMark(){
+        trail.Clear();
         trail.emitting = true;
-
     }
 
     void LeaveMark(){
