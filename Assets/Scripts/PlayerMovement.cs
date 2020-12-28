@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float frequency = 2;
     [SerializeField] float amplitude = 2;
     [SerializeField] float maxDistFromCenter = 7;
-    
+    [SerializeField] float returnToRinkSpeed = 10;
     [SerializeField] float velocity;
     [SerializeField] float turnSpeed;
     [SerializeField] Text text;
@@ -89,30 +89,36 @@ public class PlayerMovement : MonoBehaviour
         lastSineVal = sineOffset;
 
 
-    if(forwardMotion > 0){
-        velocity += acceleration * (1-rotationAmount) * Time.deltaTime * forwardMotion;
-    }else{
-        velocity -= rotationAmount * Time.deltaTime * decceleration;
-        velocity -= stopSpeed * -forwardMotion * Time.deltaTime;
-    }
+        if(forwardMotion > 0){
+            velocity += acceleration * (1-rotationAmount) * Time.deltaTime * forwardMotion;
+        }else{
+            velocity -= rotationAmount * Time.deltaTime * decceleration;
+            velocity -= stopSpeed * -forwardMotion * Time.deltaTime;
+        }
 
         velocity = Mathf.Clamp(velocity, 0, moveSpeed);
         sineOffset = sineOffset * (1-rotationAmount) * amplitude;
         float turnSpeedTuned = Mathf.Lerp(turnSpeed/3, turnSpeed, 1-(velocity/moveSpeed) - Mathf.Clamp01(forwardMotion));
-        transform.Rotate(0, 0, -rotation * turnSpeedTuned * Time.deltaTime);
-        transform.Rotate(0, 0, sineOffset * Time.deltaTime * amplitude * (Mathf.Clamp01(forwardMotion) + 0.2f));
 
-        Vector3 toCenter = Vector3.zero - transform.position;
+        Vector3 toPlayer = transform.position;
+        float distanceFromCenter = toPlayer.magnitude;
         Vector3 perp;
-        float distanceFromCenter = toCenter.magnitude;
+        toPlayer.z = 0;
+       
+        perp = Vector3.Cross(Vector3.forward, toPlayer.normalized);
+        perp.z = 0;
+
         if(distanceFromCenter > maxDistFromCenter){
-            perp = Vector3.Cross(Vector3.forward, toCenter);
-            Quaternion toCenterRot = Quaternion.Euler(toCenter);
-            Quaternion perpRot = Quaternion.LookRotation(-Vector3.forward, perp);
-            toCenterRot = Quaternion.Lerp(perpRot, toCenterRot, 0.25f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, toCenterRot, Time.deltaTime * 50);
-            //get cross product and rotate towards it quickly;
+            Quaternion toPlayerRot = Quaternion.Euler(-toPlayer);
+            Quaternion perpRot = Quaternion.LookRotation(Vector3.forward, perp);
+            Quaternion newDir = Quaternion.Lerp(perpRot, toPlayerRot, (distanceFromCenter-maxDistFromCenter) + 0.1f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, newDir, Time.deltaTime * returnToRinkSpeed);
+
+        }else{
+            transform.Rotate(0, 0, -rotation * turnSpeedTuned * Time.deltaTime);
+            transform.Rotate(0, 0, sineOffset * Time.deltaTime * amplitude * (Mathf.Clamp01(forwardMotion) + 0.2f));
         }
+
         transform.position += transform.up * velocity * Time.deltaTime;
         
     }
