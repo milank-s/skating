@@ -182,8 +182,9 @@ MonoBehaviour:
   easing: 0.002
   rotationSpeed: 10
   moveSpeed: 3
-  acceleration: 0.75
+  acceleration: 1
   decceleration: 0.5
+  stopSpeed: 0
   frequency: 5
   amplitude: 15
   velocity: 0

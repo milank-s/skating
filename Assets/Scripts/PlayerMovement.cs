@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float acceleration;
     [SerializeField] float decceleration;
+    [SerializeField] float stopSpeed;
     [SerializeField] float frequency = 2;
     [SerializeField] float amplitude = 2;
     
@@ -42,8 +43,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void FreeMovement(){
-        transform.position += transform.up * velocity * Time.deltaTime;
         float rotation = Input.GetAxis("Horizontal");
+        float forwardMotion = Input.GetAxis("Vertical");
         float rotationAmount = Mathf.Abs(rotation);
         
         //float sineOffset = Mathf.Sin(Time.time * frequency);
@@ -53,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         float delta = sineOffset - lastSineVal;
 
 
-        if(rotationAmount > 0.2f){
+        if(forwardMotion <= 0){
             if(!trail.emitting){
                 RecordMark();
             }
@@ -78,13 +79,20 @@ public class PlayerMovement : MonoBehaviour
         lastSineVal = sineOffset;
 
 
-        velocity += acceleration * (1-rotationAmount) * Time.deltaTime;
+    if(forwardMotion > 0){
+        velocity += acceleration * (1-rotationAmount) * Time.deltaTime * forwardMotion;
+    }else{
         velocity -= rotationAmount * Time.deltaTime * decceleration;
+        velocity -= stopSpeed * -forwardMotion * Time.deltaTime;
+    }
+
         velocity = Mathf.Clamp(velocity, 0, moveSpeed);
-        sineOffset = sineOffset * (1-rotationAmount) * amplitude * Mathf.Lerp(1, 0.1f, Mathf.Pow(velocity/moveSpeed, 3));
-        float turnSpeedTuned = Mathf.Lerp(turnSpeed/2, turnSpeed, 1-(velocity/moveSpeed));
+        sineOffset = sineOffset * (1-rotationAmount) * amplitude;
+        float turnSpeedTuned = Mathf.Lerp(turnSpeed/3, turnSpeed, 1-(velocity/moveSpeed) - Mathf.Clamp01(forwardMotion));
         transform.Rotate(0, 0, -rotation * turnSpeedTuned * Time.deltaTime);
-        transform.Rotate(0, 0, sineOffset * Time.deltaTime * amplitude);
+        transform.Rotate(0, 0, sineOffset * Time.deltaTime * amplitude * Mathf.Clamp01(forwardMotion));
+
+        transform.position += transform.up * velocity * Time.deltaTime;
     }
 
     void RecordMark(){
