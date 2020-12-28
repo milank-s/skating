@@ -131,7 +131,12 @@ PrefabInstance:
     - target: {fileID: 5862427450899560208, guid: 5df61a085da6321419014b6866070f6c,
         type: 3}
       propertyPath: stopSpeed
-      value: 100
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5862427450899560208, guid: 5df61a085da6321419014b6866070f6c,
+        type: 3}
+      propertyPath: decceleration
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5862427450899560209, guid: 5df61a085da6321419014b6866070f6c,
         type: 3}

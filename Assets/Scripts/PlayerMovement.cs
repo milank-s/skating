@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] TrailRenderer trail;
     [SerializeField] SkateTrail skatingTrail;
     
+    float trailTimer;
     float lastSineVal;
     float angle;
     float radius;
@@ -57,6 +58,12 @@ public class PlayerMovement : MonoBehaviour
         if(forwardMotion <= 0){
             if(!trail.emitting){
                 RecordMark();
+            }else{
+                trailTimer += Time.deltaTime;
+                if(trailTimer > 5){
+                    LeaveMark();
+                    RecordMark();
+                }
             }
         }else{
             if(delta < 0){
@@ -98,9 +105,11 @@ public class PlayerMovement : MonoBehaviour
     void RecordMark(){
         trail.Clear();
         trail.emitting = true;
+        trailTimer = 0;
     }
 
     void LeaveMark(){
+        trailTimer = 0;
         trail.emitting = false;
         Vector3[] linePoints = new Vector3[trail.numPositions];
         trail.GetPositions(linePoints);
