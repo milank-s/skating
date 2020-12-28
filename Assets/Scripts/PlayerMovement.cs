@@ -24,7 +24,9 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] TrailRenderer trail;
     [SerializeField] SkateTrail skatingTrail;
-    
+    [SerializeField] ParticleSystem snowSpray;
+    ParticleSystem.EmissionModule snowSprayEmission;
+
     float trailTimer;
     float lastSineVal;
     float angle;
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        snowSprayEmission = snowSpray.emission;
         radius = baseRadius;
         radiusTarget = baseRadius;
     }
@@ -91,7 +94,13 @@ public class PlayerMovement : MonoBehaviour
 
         if(forwardMotion > 0){
             velocity += acceleration * (1-rotationAmount) * Time.deltaTime * forwardMotion;
+            snowSprayEmission.rateOverTime = 0;
         }else{
+            if(forwardMotion < -0.5f && velocity > 0.1f){
+                snowSprayEmission.rateOverTime = 20;
+            }else{
+                snowSprayEmission.rateOverTime = 0;
+            }
             velocity -= rotationAmount * Time.deltaTime * decceleration;
             velocity -= stopSpeed * -forwardMotion * Time.deltaTime;
         }
