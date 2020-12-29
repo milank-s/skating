@@ -37,7 +37,7 @@ public class SpriteSpawner : MonoBehaviour
     void SpawnSprite(Sprite[] sprites)
     {
         
-        curSprite = Instantiate(spritePrefab, transform.position, Quaternion.identity).GetComponent<SpriteRenderer>();
+        curSprite = Instantiate(spritePrefab, transform.position, Quaternion.Euler(-90, 0,0)).GetComponent<SpriteRenderer>();
         
         
         int newIndex = Random.Range(0, sprites.Length);

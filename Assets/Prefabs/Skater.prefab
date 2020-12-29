@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 11427772}
   - component: {fileID: 5074244}
   - component: {fileID: 5867736}
+  - component: {fileID: 6748648494962018319}
   m_Layer: 0
   m_Name: Skater
   m_TagString: Untagged
@@ -96,6 +97,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.08371639
+--- !u!114 &6748648494962018319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d889535cc68333a4588143588def9ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 8688f60bf26ac1946b7d32fb1fa1eb70, type: 3}
+  - {fileID: 21300000, guid: e5348468d09a98a489e1194dc22029da, type: 3}
+  - {fileID: 21300000, guid: b6330fa7554dfc740bdf2d294deca9cb, type: 3}
+  spawnFrequency: 1
+  spawnDistance: 1
+  spritePrefab: {fileID: 1011535995022957894, guid: 94e7eab30e6c9ad4f95b4a779b944b98,
+    type: 3}
 --- !u!1 &5813196518068301875
 GameObject:
   m_ObjectHideFlags: 0
