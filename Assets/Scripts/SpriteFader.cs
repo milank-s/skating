@@ -6,6 +6,7 @@ public class SpriteFader : MonoBehaviour
 {
     [SerializeField] SpriteRenderer r;
     public float fadeSpeed;
+    public float startAlpha;
     private float timer;
 
     private void Start()
@@ -17,7 +18,7 @@ public class SpriteFader : MonoBehaviour
     {
         timer -= Time.deltaTime;
         Color c = r.color;
-        c.a = timer / fadeSpeed;
+        c.a = (timer / fadeSpeed) * startAlpha;
         r.color = c;
         if (timer < 0)
         {

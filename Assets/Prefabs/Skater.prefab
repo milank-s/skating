@@ -329,7 +329,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5daf272b63372374ebfc513e077e651c, type: 3}
   - {fileID: 21300000, guid: c6764e9c1c25e3945b7b8a8fcca1afac, type: 3}
   - {fileID: 21300000, guid: 9e162fb7542bd5549b1a75356a1ff9cd, type: 3}
-  spawnFrequency: 1
+  spawnFrequency: 2
   spawnDistance: 1
   spritePrefab: {fileID: 1011535995022957894, guid: 94e7eab30e6c9ad4f95b4a779b944b98,
     type: 3}

@@ -13,6 +13,9 @@ public class FrameByFrame : MonoBehaviour
     int index;
     float timer;
 
+void Start(){
+  timer = Random.Range(0, 1f/framerate);
+}
     void Update(){
 
         if(timer < 0){

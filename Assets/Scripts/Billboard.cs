@@ -7,7 +7,7 @@ public class Billboard : MonoBehaviour
 
 
     float count = 0;
-    float average = 10;
+    float average = 60;
     [SerializeField] SpriteRenderer spriteRenderer;
     Vector3 lastPos;
     Vector3 deltaAverage;
@@ -32,7 +32,7 @@ public class Billboard : MonoBehaviour
             }
         }
 
-        if(deltaAverage.x <= 0){
+        if(deltaAverage.x >= 0){
             spriteRenderer.flipX = true;
         }else{
             spriteRenderer.flipX = false;

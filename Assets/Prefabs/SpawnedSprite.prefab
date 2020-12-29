@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8355757783950104817}
   - component: {fileID: 5643634110124745907}
   - component: {fileID: -7541800528410217522}
+  - component: {fileID: -8450011113576503512}
   m_Layer: 0
   m_Name: SpawnedSprite
   m_TagString: Untagged
@@ -95,4 +96,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   r: {fileID: 5643634110124745907}
-  fadeSpeed: 1
+  fadeSpeed: 2
+  startAlpha: 0.8
+--- !u!114 &-8450011113576503512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011535995022957894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aad4719fb1cf6e4fa6134f9274aa06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 5643634110124745907}
+  lookTarget: {fileID: 0}
