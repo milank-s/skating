@@ -99,15 +99,23 @@ public class PlayerMovement : MonoBehaviour
 
         if(forwardMotion > 0){
             velocity += acceleration * (1-rotationAmount) * Time.deltaTime * forwardMotion;
-            snowSprayEmission.rateOverTime = 0;
+            
+             snowSpray.Stop();
         }else{
             if(forwardMotion < -0.5f && velocity > 0.1f){
                 if(!audio.isPlaying){
+                   
+                    
                     audio.PlayOneShot(skateSFX[Random.Range(0, skateSFX.Length)]);
                 }
-                snowSprayEmission.rateOverTime = 20;
+
+            if(!snowSpray.isPlaying){
+                snowSpray.Play();
+            }
+                
             }else{
-                snowSprayEmission.rateOverTime = 0;
+                
+                snowSpray.Stop();
             }
             velocity -= rotationAmount * Time.deltaTime * decceleration;
             velocity -= stopSpeed * -forwardMotion * Time.deltaTime;
@@ -149,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
     void LeaveMark(){
         trailTimer = 0;
         trail.emitting = false;
-        Vector3[] linePoints = new Vector3[trail.numPositions];
+        Vector3[] linePoints = new Vector3[trail.positionCount];
         trail.GetPositions(linePoints);
         SkateTrail newTrail = Instantiate(skatingTrail, transform.position, Quaternion.identity);
         newTrail.Initialise(linePoints, 5);

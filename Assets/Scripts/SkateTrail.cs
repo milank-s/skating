@@ -11,7 +11,7 @@ public class SkateTrail : MonoBehaviour
     public void Initialise(Vector3[] points, float time){
         life = time;
         lifeTime = time;
-        line.numPositions = points.Length;
+        line.positionCount = points.Length;
         line.SetPositions(points);
     }
 
