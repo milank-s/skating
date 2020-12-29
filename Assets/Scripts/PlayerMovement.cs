@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
+[Header("Movement")]
     [SerializeField] Transform center;
     [SerializeField] float baseRadius;
     [SerializeField] Vector2 radiusRange;
@@ -22,9 +24,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float turnSpeed;
     [SerializeField] Text text;
 
+[Header("FX")]
     [SerializeField] TrailRenderer trail;
     [SerializeField] SkateTrail skatingTrail;
     [SerializeField] ParticleSystem snowSpray;
+    [SerializeField] AudioSource audio;
+    [SerializeField] AudioClip[] skateSFX;
     ParticleSystem.EmissionModule snowSprayEmission;
 
     float trailTimer;
@@ -97,6 +102,9 @@ public class PlayerMovement : MonoBehaviour
             snowSprayEmission.rateOverTime = 0;
         }else{
             if(forwardMotion < -0.5f && velocity > 0.1f){
+                if(!audio.isPlaying){
+                    audio.PlayOneShot(skateSFX[Random.Range(0, skateSFX.Length)]);
+                }
                 snowSprayEmission.rateOverTime = 20;
             }else{
                 snowSprayEmission.rateOverTime = 0;
@@ -129,13 +137,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.position += transform.up * velocity * Time.deltaTime;
-        
     }
 
     void RecordMark(){
         trail.Clear();
         trail.emitting = true;
         trailTimer = 0;
+        audio.PlayOneShot(skateSFX[Random.Range(0, skateSFX.Length)]);
     }
 
     void LeaveMark(){
