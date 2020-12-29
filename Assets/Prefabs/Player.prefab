@@ -177,7 +177,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 32800d64911cdc341895ccc942d23a62, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -326,7 +326,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: b6330fa7554dfc740bdf2d294deca9cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -507,6 +507,8 @@ MonoBehaviour:
   cohesionWeight: 0
   alignmentSphereRadius: 0
   alignmentWeight: 0
+  maxSpeed: 3
+  minSpeed: 0.5
   speedConst: 0
   angle: 0
 --- !u!1 &6683529542861004019
