@@ -58,6 +58,8 @@ MonoBehaviour:
   cohesionWeight: 3
   alignmentSphereRadius: 3
   alignmentWeight: 1
+  maxSpeed: 3
+  minSpeed: 0.2
   speedConst: 1
   angle: 90
 --- !u!50 &5074244
@@ -329,6 +331,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5daf272b63372374ebfc513e077e651c, type: 3}
   - {fileID: 21300000, guid: c6764e9c1c25e3945b7b8a8fcca1afac, type: 3}
   - {fileID: 21300000, guid: 9e162fb7542bd5549b1a75356a1ff9cd, type: 3}
+  - {fileID: 21300000, guid: 75f72f2195c19604ca4d744d618b44e6, type: 3}
+  - {fileID: 21300000, guid: da64203484af8f845a167c599d537046, type: 3}
+  - {fileID: 21300000, guid: 625ea830acd69dc4ab3cb26b943162f2, type: 3}
   spawnFrequency: 2
   spawnDistance: 1
   spritePrefab: {fileID: 1011535995022957894, guid: 94e7eab30e6c9ad4f95b4a779b944b98,
@@ -363,7 +368,7 @@ PrefabInstance:
     - target: {fileID: 4178952233606069236, guid: 20629bf05ac165f43b4e1acc4bf3ba92,
         type: 3}
       propertyPath: frames.Array.size
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4178952233606069236, guid: 20629bf05ac165f43b4e1acc4bf3ba92,
         type: 3}
@@ -428,6 +433,24 @@ PrefabInstance:
       propertyPath: frames.Array.data[11]
       value: 
       objectReference: {fileID: 21300000, guid: 9e162fb7542bd5549b1a75356a1ff9cd,
+        type: 3}
+    - target: {fileID: 4178952233606069236, guid: 20629bf05ac165f43b4e1acc4bf3ba92,
+        type: 3}
+      propertyPath: frames.Array.data[12]
+      value: 
+      objectReference: {fileID: 21300000, guid: 75f72f2195c19604ca4d744d618b44e6,
+        type: 3}
+    - target: {fileID: 4178952233606069236, guid: 20629bf05ac165f43b4e1acc4bf3ba92,
+        type: 3}
+      propertyPath: frames.Array.data[13]
+      value: 
+      objectReference: {fileID: 21300000, guid: da64203484af8f845a167c599d537046,
+        type: 3}
+    - target: {fileID: 4178952233606069236, guid: 20629bf05ac165f43b4e1acc4bf3ba92,
+        type: 3}
+      propertyPath: frames.Array.data[14]
+      value: 
+      objectReference: {fileID: 21300000, guid: 625ea830acd69dc4ab3cb26b943162f2,
         type: 3}
     - target: {fileID: 5957086546109036688, guid: 20629bf05ac165f43b4e1acc4bf3ba92,
         type: 3}

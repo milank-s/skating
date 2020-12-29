@@ -14,6 +14,8 @@ public class SkaterBoid : MonoBehaviour {
 	public float cohesionWeight;
 	public float alignmentSphereRadius;
 	public float alignmentWeight;
+	public float maxSpeed = 3;
+	public float minSpeed = 0.5f;
 	public float speedConst;
 	public float angle;
 
@@ -25,6 +27,7 @@ public class SkaterBoid : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		distanceFromCenter = Vector3.Distance(transform.position, Vector3.zero);
+		speedConst = Mathf.Lerp(maxSpeed, minSpeed, distanceFromCenter/7);
 		curAngle = GetAngle();
 		rigid = transform.GetComponent<Rigidbody2D>();
 		rigid.velocity = new Vector2(Random.Range(-speedConst, speedConst), Random.Range(-speedConst, speedConst));

@@ -20,6 +20,7 @@ public class SkaterManager : MonoBehaviour
 
     [Space(10)]
 
+    public float minSpawnDistance = 3f;
     public SkaterBoid skater;
     public float spawnRadius = 10;
     public int amount = 20;
@@ -41,7 +42,6 @@ public class SkaterManager : MonoBehaviour
         alignmentWeight = s.alignmentWeight;
         cohesionSphereRadius =  s.cohesionSphereRadius;
         cohesionWeight =  s.cohesionWeight;
-        speed = s.speedConst;
         boidFOV = s.angle;
     }
 
@@ -53,7 +53,8 @@ public class SkaterManager : MonoBehaviour
     }
 
     public void SpawnSkater(){
-        Vector3 spawnPos = Random.insideUnitCircle * spawnRadius;
+        Vector3 spawnPos = Random.insideUnitCircle.normalized * minSpawnDistance;
+        spawnPos += spawnPos.normalized * Random.Range(0f, spawnRadius-minSpawnDistance);
         SkaterBoid newSkater = Instantiate(skater, spawnPos, Quaternion.identity);
         newSkater.transform.parent = transform;
         skaters.Add(newSkater);
@@ -71,7 +72,6 @@ public class SkaterManager : MonoBehaviour
             s.alignmentWeight = alignmentWeight;
             s.cohesionSphereRadius = cohesionSphereRadius;
             s.cohesionWeight = cohesionWeight;
-            s.speedConst = speed;
             s.angle = boidFOV;
     }
     
@@ -86,7 +86,6 @@ public class SkaterManager : MonoBehaviour
             s.alignmentWeight = alignmentWeight;
             s.cohesionSphereRadius = cohesionSphereRadius;
             s.cohesionWeight = cohesionWeight;
-            s.speedConst = speed;
             s.angle = boidFOV;
         }
     }

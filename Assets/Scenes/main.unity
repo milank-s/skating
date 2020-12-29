@@ -374,16 +374,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateAroundRinkSpeed: 25
-  followRinkWeight: 2
+  followRinkWeight: 3
   minSeparationLength: 1.25
   separationSphereRadius: 2
   separationWeight: 2
   cohesionSphereRadius: 5
-  cohesionWeight: 3
+  cohesionWeight: 1.5
   alignmentSphereRadius: 3
   alignmentWeight: 2
   speed: 2
   boidFOV: 180
+  minSpawnDistance: 2
   skater: {fileID: 11427772, guid: 5a774da844fbdfc46b4720b0a6de6918, type: 3}
   spawnRadius: 7
   amount: 25
