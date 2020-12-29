@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioSource audio;
     [SerializeField] AudioClip[] skateSFX;
     ParticleSystem.EmissionModule snowSprayEmission;
+    [SerializeField] SpriteRenderer sprite;
 
     float trailTimer;
     float lastSineVal;
@@ -54,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FreeMovement(){
 
-
+        
         float rotation = Input.GetAxis("Horizontal");
         float forwardMotion = Input.GetAxis("Vertical");
         float rotationAmount = Mathf.Abs(rotation);
@@ -143,8 +144,10 @@ public class PlayerMovement : MonoBehaviour
             transform.Rotate(0, 0, -rotation * turnSpeedTuned * Time.deltaTime);
             transform.Rotate(0, 0, sineOffset * Time.deltaTime * amplitude * (Mathf.Clamp01(forwardMotion) + 0.2f));
         }
-
+        Vector3 deltaPos = transform.position;
         transform.position += transform.up * velocity * Time.deltaTime;
+        deltaPos = transform.position - deltaPos;
+
     }
 
     void RecordMark(){

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FrameByFrame : MonoBehaviour
 {
+    public bool randomize;
     public Sprite[] frames;
     public SpriteRenderer r;
 
@@ -17,7 +18,11 @@ public class FrameByFrame : MonoBehaviour
         if(timer < 0){
           // r.flipX = index %2 == 0;
           timer = 1f/framerate;
-          index++;
+          if(randomize){
+            index = Random.Range(0, frames.Length);
+          }else{
+            index++;
+          }
           r.sprite = frames[index%frames.Length];
 
         }
