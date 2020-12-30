@@ -136,6 +136,21 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5862427450899560208, guid: 5df61a085da6321419014b6866070f6c,
+        type: 3}
+      propertyPath: velocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5862427450899560208, guid: 5df61a085da6321419014b6866070f6c,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5862427450899560208, guid: 5df61a085da6321419014b6866070f6c,
+        type: 3}
+      propertyPath: turnSpeed
+      value: 360
+      objectReference: {fileID: 0}
     - target: {fileID: 5862427450899560209, guid: 5df61a085da6321419014b6866070f6c,
         type: 3}
       propertyPath: m_Name

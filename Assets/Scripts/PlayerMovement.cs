@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         snowSprayEmission = snowSpray.emission;
         radius = baseRadius;
         radiusTarget = baseRadius;
+        velocity = 1;
     }
 
     // Update is called once per frame
@@ -137,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
         if(distanceFromCenter > maxDistFromCenter){
             Quaternion toMiddleRot = Quaternion.LookRotation(Vector3.forward, -toPlayer);
             Quaternion perpRot = Quaternion.LookRotation(Vector3.forward, perp);
-            Quaternion newDir = Quaternion.Lerp(perpRot, toMiddleRot, (distanceFromCenter-maxDistFromCenter) + 0.1f);
+            Quaternion newDir = Quaternion.Lerp(perpRot, toMiddleRot, (distanceFromCenter-maxDistFromCenter) + 0.25f);
             transform.rotation = Quaternion.Lerp(transform.rotation, newDir, Time.deltaTime * returnToRinkSpeed);
 
         }else{
