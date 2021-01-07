@@ -283,7 +283,7 @@ Transform:
   m_GameObject: {fileID: 5515940078471691739}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -0.025}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5862427450899560213}
   m_RootOrder: 3
@@ -366,9 +366,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomize: 0
   frames:
-  - {fileID: 21300000, guid: b6330fa7554dfc740bdf2d294deca9cb, type: 3}
-  - {fileID: 21300000, guid: 8ae8cbc84ad61c841bd8460638467abc, type: 3}
-  - {fileID: 21300000, guid: 198a8714e2b912f40a5932b814a703a2, type: 3}
+  - {fileID: 21300000, guid: 993ba3ef9531947029eeb40730881efe, type: 3}
+  - {fileID: 21300000, guid: b1a4cc476dde0458aa8f27392207ff2c, type: 3}
+  - {fileID: 21300000, guid: e14d75d2cfa144fe685178e5cde49bc1, type: 3}
+  - {fileID: 21300000, guid: b61a09cb135814f9399ec2053c59c32d, type: 3}
   r: {fileID: 6433195294375475231}
   framerate: 1
 --- !u!1 &5862427450899560209
