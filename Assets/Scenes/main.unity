@@ -136,6 +136,11 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1559319683612657992, guid: 5df61a085da6321419014b6866070f6c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5862427450899560208, guid: 5df61a085da6321419014b6866070f6c,
         type: 3}
       propertyPath: velocity
@@ -213,6 +218,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5df61a085da6321419014b6866070f6c, type: 3}
+--- !u!1 &440356524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5515940078471691739, guid: 5df61a085da6321419014b6866070f6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 440356523}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &440356525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440356524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19db8f780b0f3442ebadb12f8383305d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames:
+  - sprites: []
+  - sprites: []
+  - sprites: []
+  - sprites: []
+  timeBetweenFrames: 0.05
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
