@@ -141,6 +141,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1860458452314297283, guid: 5df61a085da6321419014b6866070f6c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860458452314297283, guid: 5df61a085da6321419014b6866070f6c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860458452314297283, guid: 5df61a085da6321419014b6866070f6c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 5862427450899560208, guid: 5df61a085da6321419014b6866070f6c,
         type: 3}
       propertyPath: velocity
@@ -156,6 +171,11 @@ PrefabInstance:
       propertyPath: turnSpeed
       value: 360
       objectReference: {fileID: 0}
+    - target: {fileID: 5862427450899560208, guid: 5df61a085da6321419014b6866070f6c,
+        type: 3}
+      propertyPath: animation
+      value: 
+      objectReference: {fileID: 440356525}
     - target: {fileID: 5862427450899560209, guid: 5df61a085da6321419014b6866070f6c,
         type: 3}
       propertyPath: m_Name
@@ -237,11 +257,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frames:
-  - sprites: []
-  - sprites: []
-  - sprites: []
-  - sprites: []
-  timeBetweenFrames: 0.05
+  - sprites:
+    - {fileID: 21300000, guid: b1a4cc476dde0458aa8f27392207ff2c, type: 3}
+    - {fileID: 21300000, guid: 1fbb4214b7d4843c3a0d31b22264766b, type: 3}
+  - sprites:
+    - {fileID: 21300000, guid: e14d75d2cfa144fe685178e5cde49bc1, type: 3}
+    - {fileID: 21300000, guid: 29fb3d21405d24cb0b6eb8e46bcc2107, type: 3}
+  - sprites:
+    - {fileID: 21300000, guid: b61a09cb135814f9399ec2053c59c32d, type: 3}
+    - {fileID: 21300000, guid: 9ea42790c4d014587ae3e5e86cbbd72f, type: 3}
+  - sprites:
+    - {fileID: 21300000, guid: 993ba3ef9531947029eeb40730881efe, type: 3}
+    - {fileID: 21300000, guid: f9fe8c0529e3d4a1dbe5f50f29f38010, type: 3}
+  timeBetweenFrames: 0.2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

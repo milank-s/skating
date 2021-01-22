@@ -35,9 +35,13 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            IncrementFrameBy(2);
+            SetTargetFrame(0);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            SetTargetFrame(2);
         }
 
         if (currentFrame != targetFrame)
