@@ -161,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void LeaveMark(){
+        animation.PumpLeg();
         trailTimer = 0;
         trail.emitting = false;
         Vector3[] linePoints = new Vector3[trail.positionCount];

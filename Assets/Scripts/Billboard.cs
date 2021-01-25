@@ -10,7 +10,7 @@ public class Billboard : MonoBehaviour
     float average = 60;
     [SerializeField] SpriteRenderer spriteRenderer;
     Vector3 lastPos;
-    Vector3 deltaAverage;
+    public Vector3 deltaAverage;
     [SerializeField] Transform lookTarget;
     
     void Start(){
